@@ -1,10 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "blog/base.html" %}
+{% block content %}
+<div class="post">
+    {% for post in posts %}
+    <div class="post-card">
+        <h2><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h2>
+        <div class="meta">
+            By {{ post.author }} | {{ post.created_on|date:"M d, Y" }}
+        </div>
+        <div class="content">
+            {{ post.content|truncatewords_html:30|safe }}
+        </div>
+        <a href="{% url 'post_detail' post.pk %}" class="btn">Read More</a>
+    </div>
+    {% empty %}
+    <div class="empty-state">
+        <h3>No Posts Yet!</h3>
+        <p>Check back soon for exciting content.</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

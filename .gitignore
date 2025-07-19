@@ -1,2 +1,6 @@
-/.idea
-/venv
+.idea
+virtualenv/
+venv/
+*.pyc
+__pycache__
+*.sqlite3

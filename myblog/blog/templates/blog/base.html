@@ -1,10 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load static %}
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>My Django Blog</title>
+    <link rel="stylesheet" href="{% static 'blog/style.css' %}">
 </head>
 <body>
-$END$
+<header>
+    <h1><a href="{% url 'post_list' %}">My Django Blog</a></h1>
+</header>
+
+<main>
+    {% block content %}
+    {% endblock %}
+</main>
+
+<footer>
+    &copy; 2025 Django Blog. All rights reserved.
+</footer>
 </body>
 </html>
